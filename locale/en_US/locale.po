@@ -1,0 +1,67 @@
+msgid "plugins.pubIds.edn.displayName"
+msgstr "EDN"
+
+msgid "plugins.pubIds.edn.description"
+msgstr "This plugin enables the assignment of the Digital Object Identifiers to issues, articles and galleys in OJS."
+
+msgid "plugins.pubIds.edn.readerDisplayName"
+msgstr "EDN"
+
+msgid "plugins.pubIds.edn.editor.edn.description"
+msgstr "EDN must contain of only 6 lathin letters."
+
+msgid "plugins.pubIds.edn.manager.settings.description"
+msgstr "Please configure the EDN plugin to be able to manage and use EDNs in OJS:"
+
+msgid "plugins.pubIds.edn.manager.settings.ednReassign"
+msgstr "Reassign EDNs"
+
+msgid "plugins.pubIds.edn.manager.settings.ednAssignJournalWide"
+msgstr "Assign EDNs"
+
+msgid "plugins.pubIds.edn.editor.edn"
+msgstr "EDN"
+
+msgid "plugins.pubIds.edn.editor.patternNotResolved"
+msgstr "The EDN cannot be assigned because it contains an unresolved pattern."
+
+
+msgid "plugins.pubIds.edn.editor.assigned"
+msgstr "The EDN is assigned to this {$pubObjectType}."
+
+msgid "plugins.pubIds.edn.editor.ednCustomIdentifierNotUnique"
+msgstr "The given EDN is already in use for another published item. Please enter a unique EDN for each item."
+
+msgid "plugins.pubIds.edn.editor.ednCustomIdentifierDontMatchPreg"
+msgstr "EDN must contain of only 6 lathin letters"
+
+msgid "plugins.pubIds.edn.editor.clearObjectsEdn"
+msgstr "Clear"
+
+msgid "plugins.pubIds.edn.editor.clearObjectsEdn.confirm"
+msgstr "Are you sure you wish to delete the existing EDN?"
+
+msgid "plugins.pubIds.edn.editor.clearIssueObjectsEdn"
+msgstr "Clear Issue Objects EDNs"
+
+msgid "plugins.pubIds.edn.editor.clearIssueObjectsEdn.confirm"
+msgstr "Are you sure you wish to delete the existing issue objects EDNs?"
+
+msgid "plugins.pubIds.edn.editor.clearIssueObjectsEdn.description"
+msgstr "Use the following option to clear EDNs of all objects (articles and galleys) currently scheduled for this issue."
+
+msgid "plugins.pubIds.edn.editor.assignEdn"
+msgstr "Assign the EDN {$pubId} to this {$pubObjectType}"
+
+
+msgid "plugins.pubIds.edn.editor.assignEdn.pattern"
+msgstr "The EDN {$pubId} cannot be assigned because it contains an unresolved pattern."
+
+msgid "plugins.pubIds.edn.editor.assignEdn.assigned"
+msgstr "The EDN {$pubId} has been assigned."
+
+msgid "plugins.pubIds.edn.editor.preview.publication"
+msgstr "The EDN for this publication will be {$edn}."
+
+msgid "plugins.pubIds.edn.editor.preview.publication.none"
+msgstr "A EDN has not been assigned to this publication."

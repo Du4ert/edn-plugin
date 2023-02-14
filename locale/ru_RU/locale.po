@@ -1,0 +1,58 @@
+msgid "plugins.pubIds.edn.displayName"
+msgstr "Модуль «EDN»"
+
+msgid "plugins.pubIds.edn.description"
+msgstr "Включает присвоение идентификаторов цифровых объектов (EleLIBRARY Document Number) статьям в OJS."
+
+msgid "plugins.pubIds.edn.readerDisplayName"
+msgstr "EDN"
+
+msgid "plugins.pubIds.edn.manager.settings.description"
+msgstr "Пожалуйста, настройте модуль «EDN», чтобы иметь возможность использовать EDN в OJS и управлять ими:"
+
+
+msgid "plugins.pubIds.edn.editor.edn"
+msgstr "EDN"
+
+msgid "plugins.pubIds.edn.editor.edn.description"
+msgstr "EDN должен содержать только 6 латинских букв."
+
+msgid "plugins.pubIds.edn.editor.edn.assignEdn"
+msgstr "Назначить"
+
+msgid "plugins.pubIds.edn.editor.assigned"
+msgstr "EDN присвоен {$pubObjectType}."
+
+msgid "plugins.pubIds.edn.editor.ednCustomIdentifierNotUnique"
+msgstr "Заданный EDN уже используется для другого опубликованного элемента. Пожалуйста, введите уникальный EDN для каждого элемента."
+
+msgid "plugins.pubIds.edn.editor.ednCustomIdentifierDontMatchPreg"
+msgstr "EDN должен состоять из 6 латинских букв, ничего больше"
+
+msgid "plugins.pubIds.edn.editor.clearObjectsEdn"
+msgstr "Удалить"
+
+msgid "plugins.pubIds.edn.editor.clearObjectsEdn.confirm"
+msgstr "Вы уверены, что хотите удалить существующий EDN?"
+
+msgid "plugins.pubIds.edn.editor.assignEdn"
+msgstr "Присвоить EDN {$pubId} {$pubObjectType}"
+
+msgid "plugins.pubIds.edn.editor.assignEdn.pattern"
+msgstr "EDN {$pubId} не может быть присвоен, так как он содержит не замененный шаблон."
+
+msgid "plugins.pubIds.edn.editor.assignEdn.assigned"
+msgstr "EDN {$pubId} был присвоен."
+
+msgid "plugins.pubIds.edn.editor.missingPrefix"
+msgstr "EDN должен начинаться с {$ednPrefix}."
+
+msgid "plugins.pubIds.edn.editor.preview.publication"
+msgstr "EDN для этой публикации будет {$edn}."
+
+msgid "plugins.pubIds.edn.editor.preview.publication.none"
+msgstr "EDN не был присвоен этой публикации."
+
+
+msgid "plugins.pubIds.edn.manager.settings.ednAssignJournalWide"
+msgstr "Присвоить EDN"
