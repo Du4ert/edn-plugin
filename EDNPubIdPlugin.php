@@ -12,8 +12,22 @@
  *
  * @brief edn plugin class
  */
+namespace APP\plugins\pubIds\edn;
 
-import('classes.plugins.PubIdPlugin');
+use APP\components\forms\publication\PublishForm;
+use APP\core\Application;
+use APP\facades\Repo;
+use APP\issue\Issue;
+use APP\plugins\PubIdPlugin;
+use APP\plugins\pubIds\urn\classes\form\FieldPubIdUrn;
+use APP\plugins\pubIds\urn\classes\form\FieldTextUrn;
+use APP\publication\Publication;
+use APP\template\TemplateManager;
+use PKP\components\forms\FormComponent;
+use PKP\components\forms\publication\PKPPublicationIdentifiersForm;
+use PKP\linkAction\LinkAction;
+use PKP\linkAction\request\RemoteActionConfirmationModal;
+use PKP\plugins\Hook;
 
 class EDNPubIdPlugin extends PubIdPlugin {
 
@@ -22,16 +36,16 @@ class EDNPubIdPlugin extends PubIdPlugin {
 	 */
 	public function register($category, $path, $mainContextId = null) {
 		$success = parent::register($category, $path, $mainContextId);
-		if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return $success;
+		// if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return $success;
 		if ($success && $this->getEnabled($mainContextId)) {
-			HookRegistry::register('CitationStyleLanguage::citation', array($this, 'getCitationData'));
-			HookRegistry::register('Publication::getProperties::summaryProperties', array($this, 'modifyObjectProperties'));
-			HookRegistry::register('Publication::getProperties::fullProperties', array($this, 'modifyObjectProperties'));
-			HookRegistry::register('Publication::validate', array($this, 'validatePublicationEdn'));
-			HookRegistry::register('Publication::getProperties::values', array($this, 'modifyObjectPropertyValues'));
-			HookRegistry::register('Form::config::before', array($this, 'addPublicationFormFields'));
-			HookRegistry::register('Form::config::before', array($this, 'addPublishFormNotice'));
-			HookRegistry::register('TemplateManager::display', [$this, 'loadEdnFieldComponent']);
+			Hook::add('CitationStyleLanguage::citation', [$this, 'getCitationData']);
+			Hook::add('Publication::getProperties::summaryProperties', [$this, 'modifyObjectProperties']);
+			Hook::add('Publication::getProperties::fullProperties', [$this, 'modifyObjectProperties']);
+			Hook::add('Publication::validate', [$this, 'validatePublicationEdn']);
+			Hook::add('Publication::getProperties::values', [$this, 'modifyObjectPropertyValues']);
+			Hook::add('Form::config::before', [$this, 'addPublicationFormFields']);
+			Hook::add('Form::config::before', [$this, 'addPublishFormNotice']);
+			Hook::add('TemplateManager::display', [$this, 'loadEdnFieldComponent']);
 		}
 		return $success;
 	}
@@ -249,19 +263,20 @@ class EDNPubIdPlugin extends PubIdPlugin {
 	 * @param $args array
 	 */
 	public function validatePublicationEdn($hookName, $args) {
-		$errors =& $args[0];
-		$action = $args[1];
-		$props =& $args[2];
+		$errors = & $args[0];
+        $object = $args[1];
+        $props = & $args[2];
+
 
 		if (empty($props['pub-id::edn'])) {
 			return;
 		}
 
-		if ($action === VALIDATE_ACTION_ADD) {
-			$submission = Services::get('submission')->get($props['submissionId']);
+		if (is_null($object)) {
+			$submission = Repo::submission()->get($props['submissionId']);
 		} else {
-			$publication = Services::get('publication')->get($props['id']);
-			$submission = Services::get('submission')->get($publication->getData('submissionId'));
+			$publication = Repo::publication()->get($props['id']);
+			$submission = Repo::submission()->get($publication->getData('submissionId'));
 		}
 
 		$contextId = $submission->getData('contextId');
