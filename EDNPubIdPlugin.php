@@ -14,19 +14,9 @@
  */
 namespace APP\plugins\pubIds\edn;
 
-use APP\components\forms\publication\PublishForm;
 use APP\core\Application;
 use APP\facades\Repo;
-use APP\issue\Issue;
 use APP\plugins\PubIdPlugin;
-use APP\plugins\pubIds\urn\classes\form\FieldPubIdUrn;
-use APP\plugins\pubIds\urn\classes\form\FieldTextUrn;
-use APP\publication\Publication;
-use APP\template\TemplateManager;
-use PKP\components\forms\FormComponent;
-use PKP\components\forms\publication\PKPPublicationIdentifiersForm;
-use PKP\linkAction\LinkAction;
-use PKP\linkAction\request\RemoteActionConfirmationModal;
 use PKP\plugins\Hook;
 
 class EDNPubIdPlugin extends PubIdPlugin {
@@ -36,7 +26,6 @@ class EDNPubIdPlugin extends PubIdPlugin {
 	 */
 	public function register($category, $path, $mainContextId = null) {
 		$success = parent::register($category, $path, $mainContextId);
-		// if (!Config::getVar('general', 'installed') || defined('RUNNING_UPGRADE')) return $success;
 		if ($success && $this->getEnabled($mainContextId)) {
 			Hook::add('CitationStyleLanguage::citation', [$this, 'getCitationData']);
 			Hook::add('Publication::getProperties::summaryProperties', [$this, 'modifyObjectProperties']);
